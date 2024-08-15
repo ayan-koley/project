@@ -1,0 +1,14 @@
+<% layout("/layouts/boilerplate") %>
+<div class="py-5 col-5 offset-3" style="height: 100vh">
+  <form method="post" action="/login" class="text-bg-light p-3 border needs-validation" novalidate>
+    <div class="mb-4">
+      <label for="username" class="form-label">Username</label>
+      <input type="username" class="form-control" id="username" name="username" required/>
+    </div>
+    <div class="mb-4">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" required/>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

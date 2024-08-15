@@ -1,0 +1,46 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+  .tax-info {
+    display: none;
+  }
+</style>
+<div>
+  <div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+  <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+</div>
+</div>
+  <%= sucess %>
+  <h3>All Listings</h3>
+  <div class="row row-cols-lg-5">
+    <% for(list of allListings) { %>
+    <div class="card" style="width: 18rem">
+      <a href="/listings/show/<%= list._id %>" class="list-item">
+        <img src="<%= list.image.path %>" class="card-img-top" alt="listings" />
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= list.title%></b>
+            <br />
+            <%= list.price %>
+            <p class="tax-info">+18% GST</p>
+          </p>
+        </div>
+      </a>
+    </div>
+    <% } %>
+  </div>
+<script>
+  let checkbox = document.getElementById("flexSwitchCheckDefault");
+
+  checkbox.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+    for(tax of taxInfo) {
+      if(tax.style.display != "inline") {
+        tax.style.display = "inline";
+      } else {
+        tax.style.display = "none";
+      }
+    }
+  })
+</script>

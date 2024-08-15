@@ -1,0 +1,78 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="py-3 row">
+  <div class="col-8 offset-2">
+    <form
+      method="post"
+      action="/listings/<%= user._id %>?_method=PUT"
+      enctype="multipart/form-data"
+      class="needs-validation"
+      novalidate
+    >
+      <div class="py-2">
+        <label for="title" class="form-label fw-bold">Title</label>
+        <input
+          type="text"
+          name="listing[title]"
+          class="form-control"
+          value="<%= user.title %>"
+          required
+        />
+      </div>
+      <div class="py-2">
+        <label for="description" class="form-label fw-bold">Description</label>
+        <textarea
+          name="listing[description]"
+          id="textArea"
+          class="form-control"
+          required
+        >
+<%= user.description %>
+        </textarea>
+      </div>
+      <div>
+        Original Image Is <br />
+        <img src="<%= originalImage %>" alt="listing Image" />
+      </div>
+      <div class="py-2">
+        <label for="listing[image]" class="form-label fw-bold"
+          >Upload New Image</label
+        >
+        <input type="file" name="listing[image]" class="form-control" />
+      </div>
+      <div class="row py-2">
+        <div class="col-4">
+          <label for="price" class="form-label fw-bold">Price</label>
+          <input
+            type="number"
+            name="listing[price]"
+            class="form-control"
+            value="<%= user.price %>"
+            required
+          />
+        </div>
+        <div class="col-8">
+          <label for="location" class="form-label fw-bold">Location</label>
+          <input
+            type="text"
+            name="listing[location]"
+            class="form-control"
+            value="<%= user.location %>"
+            required
+          />
+        </div>
+      </div>
+      <div class="py-2">
+        <label for="country" class="form-label fw-bold">Country</label>
+        <input
+          type="text"
+          name="listing[country]"
+          class="form-control"
+          value="<%= user.country %>"
+          required
+        />
+      </div>
+      <button class="btn btn-dark my-3 edit-btn">Edit!</button>
+    </form>
+  </div>
+</div>

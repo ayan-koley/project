@@ -1,0 +1,113 @@
+<% layout("/layouts/boilerplate") %>
+<script>
+  let mapToken = "<%= process.env.MAP_TOKEN %>";
+  const listing = <%- JSON.stringify(show) %>;
+</script>
+<div class="card card-list" style="width: 45rem">
+  <img
+    src="<%= show.image.path %>"
+    class="card-img-top card-img-top-list"
+    alt="location-image"
+  />
+  <div class="card-body">
+    <p>
+      <i><b>Owned By: <%= show.owner.username %></b></i>
+    </p>
+    <h5 class="card-title"><b><%= show.title %></b></h5>
+    <p class="card-text"><%= show.description %></p>
+    <p class="card-text"><%= show.price %></p>
+    <p class="loaction">
+      <i class="fa-solid fa-location-dot"></i><%= show.location %>
+    </p>
+    <p class="country">
+      <i class="fa-solid fa-earth-americas"></i><%= show.country %>
+    </p>
+    <% if(currUser && currUser._id.equals(show.owner._id)) { %>
+    <div class="btns">
+      <a href="/listings/edit/<%= show._id %>" class="btn btn-primary"
+        >Edit route</a
+      >
+      <form method="post" action="/listings/<%= show._id %>?_method=delete">
+        <button class="btn btn-danger">Delete List</button>
+      </form>
+    </div>
+    <% } %>
+  </div>
+</div>
+<!-- review section -->
+
+<div class="card card-list p-4" style="width: 50rem">
+  <div class="row">
+    <% for(rev of show.review) { %>
+
+    <div class="col col-sm-6 border">
+      <h5 class="card-title"><%= rev.owner.username %></h5>
+      <p class="starability-result" data-rating="<%= rev.rating %>"></p>
+      <p class="card-text"><%= rev.comment %></p>
+      <% if(currUser && currUser._id.equals(rev.owner._id)) { %>
+      <form
+        method="post"
+        action="/listings/<%= show._id %>/reviews/<%= rev._id %>?_method=delete"
+      >
+        <button class="btn btn-dark">Delete</button>
+      </form>
+      <% } %>
+    </div>
+
+    <% } %>
+  </div>
+</div>
+<% if(currUser) { %>
+<div class="card card-list p-5" style="width: 50rem">
+  <h4>Leave a Comment</h4>
+  <form
+    method="post"
+    action="/listings/<%= show._id %>/reviews"
+    class="needs-validation"
+    novalidate
+  >
+    <!-- <div>
+        <input type="range" min="1" max="5" name="listing[rating]" />
+      </div> -->
+    <p>Rating</p>
+    <fieldset class="starability-slot">
+      <legend>First rating:</legend>
+      <input
+        type="radio"
+        id="no-rate"
+        class="input-no-rate"
+        name="listing[rating]"
+        value="1"
+        checked
+        aria-label="No rating."
+      />
+      <input type="radio" id="first-rate1" name="listing[rating]" value="1" />
+      <label for="first-rate1" title="Terrible">1 star</label>
+      <input type="radio" id="first-rate2" name="listing[rating]" value="2" />
+      <label for="first-rate2" title="Not good">2 stars</label>
+      <input type="radio" id="first-rate3" name="listing[rating]" value="3" />
+      <label for="first-rate3" title="Average">3 stars</label>
+      <input type="radio" id="first-rate4" name="listing[rating]" value="4" />
+      <label for="first-rate4" title="Very good">4 stars</label>
+      <input type="radio" id="first-rate5" name="listing[rating]" value="5" />
+      <label for="first-rate5" title="Amazing">5 stars</label>
+    </fieldset>
+    <!-- <label for="description" class="form-label ">Description</label> -->
+    <label for="listing[comment]" class="form-label">Comment</label>
+    <textarea
+      id="textArea"
+      class="form-control"
+      rows="5"
+      name="listing[comment]"
+      required
+    ></textarea>
+    <div class="invalid-feedback">add some comment for this place</div>
+    <button class="btn btn-dark my-3 add-btn">Sumbit</button>
+  </form>
+</div>
+<% } %>
+<div class="col-6 offset-3">
+  <h2>Where are You</h2>
+  <div id="map"></div>
+</div>
+<script src="/js/map.js"></script>
