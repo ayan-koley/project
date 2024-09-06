@@ -1,9 +1,20 @@
 <% layout("/layouts/boilerplate") %>
 <div class="py-5 col-5 offset-3" style="height: 100vh">
-  <form method="post" action="/signup" class="text-bg-light p-3 border needs-validation" novalidate>
+  <form
+    method="post"
+    action="/signup"
+    class="text-bg-light p-3 border needs-validation"
+    novalidate
+  >
     <div class="mb-4">
       <label for="username" class="form-label">Username</label>
-      <input type="username" class="form-control" id="username" name="username" required/>
+      <input
+        type="username"
+        class="form-control"
+        id="username"
+        name="username"
+        required
+      />
     </div>
     <div class="mb-4">
       <label for="email" class="form-label">Email address</label>
@@ -21,8 +32,20 @@
     </div>
     <div class="mb-4">
       <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password" name="password" required/>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        required
+      />
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+<hr class="mt-5"/>
+<div class="row w-100 mt-5">
+  <div class="col">
+    <a href="/login" class="btn btn-primary w-100">Login</a>
+  </div>
+</div>
 </div>
