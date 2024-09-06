@@ -3,7 +3,7 @@ const Listing = require("../models/listing.js");
 const Review = require("../models/review.js");
 const User = require("../models/user.js");
 module.exports.renderSignUpPage = (req, res) => {
-  res.render("./Users/signup.ejs");
+  res.render("./users/signup.ejs");
 };
 module.exports.signUp = async (req, res) => {
   try {
