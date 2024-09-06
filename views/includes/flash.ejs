@@ -1,6 +1,22 @@
 <% if(sucess.length) { %>
+<style>
+  .flash-effect {
+    position: absolute;
+    z-index: 9;
+    top: 5rem;
+    animation: enimate-down 0.5s linear;
+  }
+  @keyframes enimate-down {
+    0% {
+      top: 0;
+    }
+    100% {
+      top: 5rem;
+    }
+  }
+</style>
 <div
-  class="alert alert-success alert-dismissible col-4 offset-3"
+  class="alert alert-success alert-dismissible col-4 offset-3 flash-effect"
   role="alert"
   style="padding: 1rem"
 >
@@ -13,8 +29,7 @@
     style="padding: 1rem"
   ></button>
 </div>
-<% } %> 
-<% if(error.length) { %>
+<% } %> <% if(error.length) { %>
 <div
   class="alert alert-danger alert-dismissible col-4 offset-3"
   role="alert"
