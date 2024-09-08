@@ -23,7 +23,7 @@ module.exports.signUp = async (req, res) => {
   }
 };
 module.exports.renderLoginPage = (req, res) => {
-  res.render("./Users/login.ejs"); // Ensure the file is named correctly
+  res.render("./users/login.ejs"); // Ensure the file is named correctly
 };
 module.exports.loginPage = (req, res) => {
   req.flash("success", "Welcome to WonderLust page!");
