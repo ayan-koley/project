@@ -1,3 +1,16 @@
 .default-text-color {
     color: #ff385c;
 }
+
+.nav-second {
+    width: 25%;
+}
+
+.card-size {
+    width: 25rem;
+    height: 25rem;
+}
+
+.content {
+    margin-left: 5.5rem;
+}

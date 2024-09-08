@@ -21,7 +21,7 @@
 </script> -->
 <!-- Hero Section -->
 <div id="carouselExampleIndicators" class="carousel slide">
-  <div class="carousel-indicators">
+  <div class="carousel-indicators" style="overflow: hidden;">
     <button
       type="button"
       data-bs-target="#carouselExampleIndicators"
@@ -43,8 +43,8 @@
       aria-label="Slide 3"
     ></button>
   </div>
-  <div class="carousel-inner" style="height: 30rem">
-    <div class="carousel-item active" style="height: 30rem">
+  <div class="carousel-inner" >
+    <div class="carousel-item active">
       <img
         src="https://media2.thrillophilia.com/images/photos/000/179/092/original/1573798409_shutterstock_732188200.jpg?w=753&h=450&dpr=1.5"
         class="d-block w-100 h-100 object-fit-fill"
@@ -110,10 +110,10 @@
   </div>
 </section> -->
 
-<div class="content d-flex flex-wrap mt-5" style="margin-left: 5.5rem">
+<div class="content d-flex flex-wrap mt-5">
   <% for(list of allListings) { %>
   <a href="/listings/show/<%= list._id %>" style="text-decoration:  none;">
-    <div class="card mx-4 mb-5 shadow" style="width: 25rem; height: 25rem;">
+    <div class="card mx-4 mb-5 shadow card-size">
       <div style="height: 15rem" class="overflow-hidden c">
         <img
           src="<%= list.image.path %>"

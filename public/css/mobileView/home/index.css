@@ -1,0 +1,13 @@
+@media only screen and (max-width: 950px) {
+   
+    .card-size {
+        height: 40vh;
+        width: 40vh;
+        margin: 0.4rem !important;
+        margin-top: 1.5rem;
+    }
+    .content {
+        margin-left: 0;
+        justify-content: center;
+    }
+}

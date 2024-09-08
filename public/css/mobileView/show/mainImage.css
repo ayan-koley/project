@@ -1,0 +1,24 @@
+@media only screen and (max-width: 950px) {
+    .big-img {
+        width: 95vw;
+        height: 50vh;
+        margin: 0.5rem;
+    }
+    .big-img img {
+        border-radius: 1rem;
+    }
+    .small-img1, .small-img2 {
+        display: none;
+    }
+    .card-list {
+        width: 70%;
+        margin: 0.5rem;
+        padding: 1rem !important;
+    }
+    .price-box {
+        display: none;
+    }
+    .review {
+        width: 100%;
+    }
+}

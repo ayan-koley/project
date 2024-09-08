@@ -4,13 +4,15 @@
   const listing = <%- JSON.stringify(show) %>;
 </script>
 
-<div class="show-outer offset-2">
-  <div class="d-flex justify-content-between">
+<div
+  class="show-outer"
+>
+  <div class="d-flex justify-content-between first-child">
     <div class="title">
       <h1><%= show.title %></h1>
     </div>
     <% if(currUser && currUser._id.equals(show.owner._id)) { %>
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center mb-3">
       <a href="/listings/edit/<%= show._id %>" class="btn btn-primary me-4"
         >Edit Button</a
       >
@@ -38,102 +40,15 @@
     <h4><%= show.description %></h4>
   </div>
   <hr />
-  <div class="review-div">
-    <div class="review mt-5">
-      <!-- review section -->
-      <div class="row">
-        <div class="d-flex flex-wrap">
-          <% for(rev of show.review) { %>
-
-          <div class="card m-2 shadow border" style="width: 47%">
-            <div class="p-2">
-              <!-- <div class="rounded">
-                <img src="" alt="avatar" />
-              </div> -->
-              <div>
-                <h3><%= rev.owner.username %></h3>
-              </div>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title"><%= rev.comment %></h5>
-              <p class="starability-result" data-rating="<%= rev.rating %>"></p>
-            </div>
-            <% if(currUser && currUser._id.equals(rev.owner._id)) { %>
-            <form
-              method="post"
-              action="/listings/<%= show._id %>/reviews/<%= rev._id %>?_method=delete"
-            >
-              <button class="btn btn-dark ms-3 mb-2">Delete</button>
-            </form>
-            <% } %>
-          </div>
-          <% } %>
-        </div>
-      </div>
-    </div>
-
-    <div class="price-box">
-      <div class="booking">
-        <div class="timing">
-          <div class="entry-time">
-            <div>
-              <p class="check-in">Check In</p>
-            </div>
-            <div>
-              <p class="date">22/07/2024</p>
-            </div>
-          </div>
-          <div class="exit-time">
-            <div>
-              <p class="check-out">Check out</p>
-            </div>
-            <div>
-              <p class="date">22/07/2024</p>
-            </div>
-          </div>
-        </div>
-        <div class="guest-box">
-          <div class="guest">
-            <p>guest</p>
-            <p>1 guest</p>
-          </div>
-          <div class="guest-cnt">cnt</div>
-        </div>
-      </div>
-      <div class="button-div">
-        <button class="btn btn-reserve btn-primary">Reserve</button>
-      </div>
-      <div class="txt">
-        <p>You Wouldn't be changed it</p>
-      </div>
-      <div class="total-price-box">
-        <!-- Calculate price  -->
-        <div class="calculate-price">
-          <div>
-            <p><u>₹<%= show.price %> X 6 night</u></p>
-            <p><u>Airbnb service fee</u></p>
-          </div>
-          <div>
-            <p class="price">₹<%= show.price * 6 %></p>
-            <p class="price">₹100</p>
-          </div>
-        </div>
-        <div class="total-price">
-          <div class="price-txt">Total Price</div>
-          <div class="price-int">₹<%= show.price * 6 + 100 %></div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Review secton-->
   <% if(currUser) { %>
-  <div class="card card-list p-5 mt-5" style="width: 50rem">
-    <h4>Leave a Comment</h4>
+  <div class="card card-list-form p-5 mt-5 form-card">
+    <h4 class="fs fsp" >Leave a Comment</h4>
     <form
       method="post"
       action="/listings/<%= show._id %>/reviews"
-      class="needs-validation"
+      class="needs-validation fsp"
       novalidate
     >
       <!-- <div>
@@ -141,7 +56,7 @@
       </div> -->
       <p>Rating</p>
       <fieldset class="starability-slot">
-        <legend>First rating:</legend>
+        <legend class="fs">First rating:</legend>
         <input
           type="radio"
           id="no-rate"
@@ -177,10 +92,36 @@
   </div>
   <% } %>
 </div>
+<hr />
+<!-- review section -->
+<h2 class="text-center mt-5">All Reviews</h2>
+<div style="overflow-x: scroll; white-space: nowrap; scrollbar-width: none">
+  <% for(rev of show.review) { %>
+  <div class="m-2 shadow border review-box" style=" display: inline-block">
+    <div class="p-2 px-4">
+      <h3><%= rev.owner.username %></h3>
+    </div>
+    <div class="card-body px-4 p-4">
+      <h5 class="card-title"><%= rev.comment %></h5>
+      <p class="starability-result" data-rating="<%= rev.rating %>"></p>
+    </div>
+    <% if(currUser && currUser._id.equals(rev.owner._id)) { %>
+    <form
+      method="post"
+      action="/listings/<%= show._id %>/reviews/<%= rev._id %>?_method=delete"
+    >
+      <button class="btn btn-dark ms-3 mb-2">Delete</button>
+    </form>
+    <% } else {%>
+    <button class="btn btn-dark ms-3 mb-2">Delete</button>
+    <% } %>
+  </div>
+  <% } %>
+</div>
 
-<div class="offset-3 mt-4">
+<div class=" mt-4 d-flex flex-column align-items-center">
   <!-- Map section -->
-  <div class="col-6 offset-3"></div>
+  <div class="col-6"></div>
   <h2>Where are You</h2>
   <div id="map"></div>
 </div>

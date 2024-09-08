@@ -1,0 +1,22 @@
+@media only screen and (max-width: 720px) {
+    .form-card {
+        width: 90%;
+        padding: 0 !important;
+        padding-left: 0.5rem !important;
+    }
+    .fs {
+        font-size: 20px;
+    }
+    .fsp {
+        padding-left: 0.5rem;
+    }
+
+    textarea {
+        height: 2rem;
+    }
+    /* reveiw box  */
+    #map {
+        height: 30vh;
+        width: 90vw;
+    }
+}
